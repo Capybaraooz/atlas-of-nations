@@ -1,25 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atlas of Nations — National Statistics Explorer</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atlas of Nations — National Statistics</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<header class="topbar">
-  <a class="brand" href="#/">Atlas of Nations</a>
-  <nav class="nav">
-    <a href="#/">Overview</a>
-    <a href="#/table">All countries</a>
-    <a href="#/compare">Compare</a>
-  </nav>
-</header>
-<main id="app" class="page"></main>
-<footer class="footer">
-  <p>Atlas of Nations · Figures are 2024 estimates compiled for exploration. Population in millions; GDP per capita in US dollars.</p>
-</footer>
-<script src="data.js"></script>
-<script src="main.js"></script>
-</body>
-</html>
+<header><h1>🌍 Atlas of Nations</h1><p>National statistics for 12 countries · population, economy, health &amp; connectivity</p>
+<nav><button data-view="overview" class="on">Overview</button><button data-view="table">Country table</button><button data-view="compare">Compare two</button></nav></header>
+<main>
+<section id="view-overview">
+ <div class="cards" id="statCards"></div>
+ <h2>Rankings</h2>
+ <div class="tabs" id="rankTabs"></div>
+ <div id="rankList"></div>
+ <h2>Life expectancy vs GDP per capita</h2>
+ <canvas id="scatter" width="900" height="340"></canvas>
+</section>
+<section id="view-table" hidden>
+ <div class="tools"><input id="q" placeholder="Search country…"><select id="region"><option value="">All regions</option></select><select id="sort"><option value="pop">Sort: Population</option><option value="gdp">GDP</option><option value="gdpPc">GDP / capita</option><option value="life">Life expectancy</option><option value="co2">CO₂ / capita</option><option value="internet">Internet %</option></select></div>
+ <div class="tblwrap"><table><thead><tr><th>Country</th><th>Pop (M)</th><th>GDP ($T)</th><th>GDP/cap</th><th>Life exp.</th><th>CO₂/cap</th><th>Internet</th><th>Urban</th></tr></thead><tbody id="tbody"></tbody></table></div>
+ <p class="hint">Click a row to open that country's detail page.</p>
+</section>
+<section id="view-compare" hidden>
+ <div class="tools"><select id="cmpA"></select><span class="vs">vs</span><select id="cmpB"></select></div>
+ <div id="cmpOut"></div>
+</section>
+<section id="view-detail" hidden><button id="back">← Back</button><div id="detail"></div></section>
+</main>
+<footer>Atlas of Nations · figures compiled from World Bank / UN-style published series (2023–2025) · works fully offline</footer>
+<script src="data.js"></script><script src="main.js"></script>
+</body></html>
