@@ -1,28 +1,13 @@
-// Hands the Atlas of Nations site in: copies app/ and screenshots/ beside this file to
-// /output and writes /output/dossier.json with the kit's vendored buildDossier library.
-// Outside the grader, MAKEFUN_OUTPUT_DIR stands in for /output.
-
-import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { buildDossier } from './vendor/makefun-frontend.ts';
-
-const here = fileURLToPath(new URL('.', import.meta.url));
-const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
-
-mkdirSync(out, { recursive: true });
-cpSync(join(here, 'app'), join(out, 'app'), { recursive: true });
-mkdirSync(join(out, 'screenshots'), { recursive: true });
-if (existsSync(join(here, 'screenshots'))) {
-  cpSync(join(here, 'screenshots'), join(out, 'screenshots'), { recursive: true });
-}
-
-writeFileSync(
-  join(out, 'dossier.json'),
-  buildDossier(out, {
-    text_max_bytes: 163840,
-    screenshots: { max: 4, max_bytes: 262144 },
-    app_max_files: 993,
-    app_max_bytes: 16777216,
-  }),
-);
+import { writeFileSync, mkdirSync, cpSync } from "node:fs";
+import { buildDossier } from "./vendor/makefun-frontend.ts";
+const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
+mkdirSync(outDir, { recursive: true });
+cpSync("app", outDir + "/app", { recursive: true });
+cpSync("screenshots", outDir + "/screenshots", { recursive: true });
+writeFileSync(outDir + "/dossier.json", buildDossier(outDir, {
+  text_max_bytes: 163840,
+  screenshots: { max: 4, max_bytes: 262144 },
+  app_max_files: 993,
+  app_max_bytes: 16777216,
+}));
+console.log("dossier written to " + outDir + "/dossier.json");

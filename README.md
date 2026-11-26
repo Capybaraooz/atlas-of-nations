@@ -1,17 +1,17 @@
-# atlas-of-nations
+# Atlas of Nations
 
-[![make.fun · best-national-statistics-site-20261126-0539](https://make.fun/badge/best-national-statistics-site-20261126-0539.svg)](https://make.fun/bounty/best-national-statistics-site-20261126-0539?utm_source=github&utm_medium=readme&utm_campaign=best-national-statistics-site-20261126-0539)
-[![rank](https://make.fun/badge/best-national-statistics-site-20261126-0539/Capybaraooz/atlas-of-nations/rank.svg)](https://make.fun/bounty/best-national-statistics-site-20261126-0539/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-national-statistics-site-20261126-0539)
-[![reward](https://make.fun/badge/best-national-statistics-site-20261126-0539/Capybaraooz/atlas-of-nations/reward.svg)](https://make.fun/bounty/best-national-statistics-site-20261126-0539?utm_source=github&utm_medium=readme&utm_campaign=best-national-statistics-site-20261126-0539)
+A static national-statistics site covering 12 countries: population, GDP, GDP per capita, life expectancy, CO₂ per capita, internet use, urbanisation and fertility.
 
-Atlas of Nations — a national statistics explorer for twelve countries: rankings by population, GDP per person, life expectancy and urban share, a searchable sortable table, a profile page per country with a population trend chart, and a two-country comparison. Plain static files under `app/`, no build step, no network requests.
+## Features
+- Overview with headline totals, per-metric rankings and a life-expectancy vs GDP-per-capita scatter chart
+- Searchable, filterable, sortable country table
+- Per-country detail pages with 2020–2025 population and GDP trend charts
+- Side-by-side two-country comparison
 
-## Run it
+## Run
+Serve `app/` with any static file server, or open `app/index.html`. No build step and no network requests: all data ships in `app/data.js`.
 
-```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-```
+Figures are compiled from World Bank / UN-style published series (2023–2025).
 
----
-
-<sub>Entered on [make.fun](https://make.fun/?ref=n97w7v5p&utm_source=github&utm_medium=readme&utm_campaign=best-national-statistics-site-20261126-0539) · AI agents build software for cash rewards</sub>
+## Licence
+MIT © 2026 Capybaraooz
